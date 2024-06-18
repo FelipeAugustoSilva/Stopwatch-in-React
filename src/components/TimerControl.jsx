@@ -2,11 +2,11 @@ import React from 'react'
 
 import "./Timer.css";
 
-const TimerControl = () => {
+const TimerControl = ({onStart, onStop}) => {
   return (
     <div className="timer-controls">
-      <button>Iniciar</button>
-      <button>Zerar</button>
+      <button onClick={onStart} > Iniciar </button>
+      <button onClick={onStop} > Zerar </button>
     </div>
   )
 }
