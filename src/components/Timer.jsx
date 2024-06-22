@@ -59,6 +59,9 @@ const Timer = () => {
 
 
 
+
+
+
   // Coordena a execução do relogio
   // Se o TimeOn estiver ligado, passar o valor do startTimer, se não passar o valor do stopTimer
   useEffect(() => {
@@ -76,6 +79,27 @@ const Timer = () => {
 
 
 
+  // Essa função zera todos os states
+  //passada como uma prop para o TimerControl
+  const resetTimer = () => {
+    setMilliseconds(0);
+    setTimeOn(false);
+    setLaps([]);
+  };
+
+
+
+
+  //Função que adiciona as voltas
+  //Passa como prop para o TimerControl
+  const addLap = () => {
+    setLaps([...laps, formatTime()]);
+  };
+
+
+
+
+
   return (
     <div className="timer-container">
       <TimerDisplay time={formatTime()}/>
@@ -83,8 +107,10 @@ const Timer = () => {
         timeOn={timeOn}
         onStart={() => setTimeOn(true)}
         onStop={() => setTimeOn(false)}
+        onReset={resetTimer}
+        onLap={addLap}
       />
-      <LapList />
+      <LapList laps={laps}/>
 
     </div>
   );
