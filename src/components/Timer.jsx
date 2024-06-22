@@ -13,10 +13,9 @@ const Timer = () => {
 
 
 
-  const [milliseconds, setMilliseconds] = useState(0); // recebe os millisegundos 
+  const [milliseconds, setMilliseconds] = useState(5555); // recebe os millisegundos 
   const [timeOn, setTimeOn] = useState(false); // tempo ligado ou desligado
   const [laps, setLaps] = useState([]); // recebe o valor das voltas
-
 
 
 
@@ -81,6 +80,7 @@ const Timer = () => {
     <div className="timer-container">
       <TimerDisplay time={formatTime()}/>
       <TimerControl 
+        timeOn={timeOn}
         onStart={() => setTimeOn(true)}
         onStop={() => setTimeOn(false)}
       />
